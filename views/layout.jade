@@ -5,6 +5,8 @@ html
 		link(rel="stylesheet", href='https://fonts.googleapis.com/css?family=Acme|Amatic+SC|Freckle+Face|Gloria+Hallelujah|VT323')
 		link(rel='stylesheet', href='/stylesheets/style.css')
 
+		script(src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js")
+
 		script(src='/components/moment/min/moment.min.js')
 		script(src='/components/angular/angular.min.js')
 		script(src='/components/angular-messages/angular-messages.min.js')
@@ -16,6 +18,19 @@ html
 
 		script(src='/javascripts/app.js')
 		script(src='/javascripts/controllers/SlideshowController.js')
+
 	
 	body(ng-app="smswall")
 		block content
+
+
+		script.
+			var config = {
+				apiKey: "AIzaSyCDc68JsPRrTyXo8F2AS6BMXTCqy3yVoPA",
+				authDomain: "smswall-7e973.firebaseapp.com",
+				databaseURL: "https://smswall-7e973.firebaseio.com",
+				projectId: "smswall-7e973",
+				storageBucket: "smswall-7e973.appspot.com",
+				messagingSenderId: "533481383562"
+			};
+			firebase.initializeApp(config);

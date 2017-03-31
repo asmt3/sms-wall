@@ -1,3 +1,9 @@
+#creds
+config/firebase.json
+
+
+
+
 # Logs
 logs
 *.log
