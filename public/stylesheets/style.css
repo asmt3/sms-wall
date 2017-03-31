@@ -1,0 +1,45 @@
+body {
+	margin:0;
+	background:#000;
+	color:#eee;
+	font: 90px Helvetica, Arial, sans-serif;
+}
+
+body, html, .slideshow {
+	height: 100%;	
+}
+
+.slideshow {
+	display: flex;
+	flex-direction: column;
+}
+
+.slideshow .main {
+	display: flex;
+	flex:9;
+	font-family: 'Acme', cursive;
+	align-items: center;
+	justify-content: center;
+}
+.slideshow .main .pun {
+	padding:12px;
+}
+.slideshow .main .pun{
+	color:#ffea6c;
+}
+
+.slideshow footer {
+	font-size: 50px;
+	font-family: 'VT323', cursive;
+	display: flex;
+	flex:1;
+	align-content: space-between;
+}
+.slideshow footer div.instructions {
+	flex:1;
+	text-align: center;
+}
+.slideshow footer .status .new {
+	background:green;
+	padding:8px;
+}

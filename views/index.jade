@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	div.slideshow(ng-controller="SlideshowController")
+		div.main
+			span.pun {{currentPun}}
+
+		footer 
+			div.instructions
+				span Text 07833 086722 - start your pun with "JEDWED"
+			div.status 
+				span.new(ng-show="newPuns.length") {{newPuns.length}} waiting
+				
+		

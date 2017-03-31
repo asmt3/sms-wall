@@ -1,0 +1,24 @@
+{
+  "name": "sms-wall",
+  "description": "Displays SMSs sent to a Twilio phone number and displays then in a slideshow",
+  "main": "",
+  "authors": [
+    "Alan Thomson"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/asmt3/sms-wall",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-material": "^1.1.3",
+    "moment": "^2.18.1"
+  }
+}
