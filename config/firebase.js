@@ -13,5 +13,7 @@ var config = {
   "client_x509_cert_url": process.env.FIREBASE_client_x509_cert_url,
 }
 
+console.log(config)
+
 
 module.exports = config
