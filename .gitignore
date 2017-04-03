@@ -1,7 +1,6 @@
 #creds
-config/firebase.json
 creds/
-
+.env
 
 
 # Logs

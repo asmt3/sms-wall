@@ -3,7 +3,7 @@ var router = express.Router();
 
 var admin = require("firebase-admin");
 
-var serviceAccount = require("../config/firebase.json");
+var serviceAccount = require("../config/firebase.js");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
