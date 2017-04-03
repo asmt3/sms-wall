@@ -1,3 +1,3 @@
 var app = angular
 	// .module('signinbook', ['ngMaterial', 'ngMessages']);
-	.module('smswall', ['ngMaterial']);
+	.module('smswall', ['ngMaterial', 'firebase']);

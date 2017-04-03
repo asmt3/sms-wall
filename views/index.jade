@@ -2,13 +2,19 @@ extends layout
 
 block content
 	div.slideshow(ng-controller="SlideshowController")
+		header
+			h1.night-hotel JedWed Band Names
 		div.main
-			span.pun {{currentPun}}
+			div.example-pun(ng-show=" !currentPun ") eg. The Talking Jeds
+			div.pun(ng-show="currentPun")
+				div.content {{currentPun.content}}
+				div.from {{currentPun.from}}
+			//- pre.all {{puns | json}}
 
 		footer 
 			div.instructions
-				span Text 07833 086722 - start your pun with "JEDWED"
+				span Text 07492 881 533 / 07492 881 JED
 			div.status 
-				span.new(ng-show="newPuns.length") {{newPuns.length}} waiting
+				span.new(ng-show=" (newCount > 0) ") {{newCount}} unseen
 				
 		

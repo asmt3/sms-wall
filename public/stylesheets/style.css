@@ -13,19 +13,34 @@ body, html, .slideshow {
 	display: flex;
 	flex-direction: column;
 }
+.slideshow header {
+flex:1;
+}
 
 .slideshow .main {
 	display: flex;
 	flex:9;
-	font-family: 'Acme', cursive;
+	font-family: 'VT323', cursive;
 	align-items: center;
 	justify-content: center;
+}
+
+.slideshow .main .all {
+	font-size:12px;
+}
+.example-pun {
+	color: #ff69b4;
 }
 .slideshow .main .pun {
 	padding:12px;
 }
 .slideshow .main .pun{
-	color:#ffea6c;
+	color: #ff69b4;
+}
+.slideshow .main .pun .from{
+	text-align: right;
+	font-size:40%;
+	color:#39FF14;
 }
 
 .slideshow footer {
@@ -33,13 +48,44 @@ body, html, .slideshow {
 	font-family: 'VT323', cursive;
 	display: flex;
 	flex:1;
-	align-content: space-between;
+	justify-content: space-between;
 }
 .slideshow footer div.instructions {
 	flex:1;
 	text-align: center;
 }
+.slideshow footer .status {
+}
 .slideshow footer .status .new {
 	background:green;
 	padding:8px;
+}
+
+
+
+
+
+/*Text effects*/
+
+.night-hotel {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 20px;
+  border: none;
+  font: normal 75px/1 "Monoton", Helvetica, sans-serif;
+  color: rgba(255,255,255,1);
+  text-align: center;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 10px rgb(255,255,255) , 0 0 20px rgb(255,255,255) , 0 0 30px rgb(255,255,255) , 0 0 40px rgb(255,17,119) , 0 0 70px rgb(255,17,119) , 0 0 80px rgb(255,17,119) , 0 0 100px rgb(255,17,119) , 0 0 150px rgb(255,17,119) ;
+  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+}
+
+/*.night-hotel:hover {*/
+.night-hotel {
+  text-shadow: 0 0 5px rgb(255,255,255) , 0 0 10px rgb(255,255,255) , 0 0 15px rgb(255,255,255) , 0 0 20px rgb(255,17,119) , 0 0 35px rgb(255,17,119) , 0 0 40px rgb(255,17,119) , 0 0 50px rgb(255,17,119) , 0 0 75px rgb(255,17,119) ;
 }
