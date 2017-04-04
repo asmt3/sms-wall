@@ -17,6 +17,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'JedWed Band Names' });
 });
 
+router.get('/admin', function(req, res, next) {
+  res.render('admin', { title: 'JedWed Band Names' });
+});
+
 router.post('/receive', function(req, res, next) {
 
 	var punData = {

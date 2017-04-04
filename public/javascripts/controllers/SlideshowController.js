@@ -22,8 +22,11 @@ app.controller('SlideshowController', function ($scope, $timeout, $firebase, $fi
 			var delay = $scope.currentPun.seen ? oldPunDelay : newPunDelay;
 
 			// update seen time
-			$scope.currentPun.seen = new Date().getTime()/1000
-			$scope.puns.$save($scope.currentPun);
+			var now = new Date().getTime()/1000
+			ref.child($scope.currentPun.$id).update({
+				seen: now
+			})
+
 		}
 		
 		$timeout(rotatePuns, delay);

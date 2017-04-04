@@ -1,0 +1,26 @@
+extends layouts/admin
+
+block content
+	div(ng-controller="AdminController")
+		md-toolbar(layout="row",class="md-hue-3")
+			div.md-toolbar-tools
+				span All Puns ({{puns.length}})
+
+		md-content
+			md-list()
+				md-list-item(flex, ng-repeat="pun in puns")
+					
+					
+					div
+						md-switch(
+							ng-model="pun.disabled"
+							ng-change="updatePun(pun)"
+						) {{pun.disabled ? 'Disabled' : 'Enabled'}}
+
+					h3 {{pun.content}}
+					h4 {{pun.from}}
+					
+					md-button.md-raised.md-warn(ng-click="deletePun(pun)") Delete
+
+				
+		

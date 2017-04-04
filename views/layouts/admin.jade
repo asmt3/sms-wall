@@ -1,0 +1,39 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/components/angular-material/angular-material.css')
+		link(rel='stylesheet', href='/stylesheets/admin.css')
+
+		
+
+		script(src='/components/moment/min/moment.min.js')
+		script(src='/components/angular/angular.min.js')
+		script(src='/components/angular-messages/angular-messages.min.js')
+		script(src='/components/angular-aria/angular-aria.min.js')
+		script(src='/components/angular-animate/angular-animate.min.js')
+		script(src='/components/angular-material/angular-material.min.js')
+
+		script(src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js")
+		script(src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js")
+
+		
+
+		script(src='/javascripts/app.js')
+		script(src='/javascripts/controllers/AdminController.js')
+
+	
+	body(ng-app="smswall")
+		block content
+
+
+		script.
+			var config = {
+				apiKey: "AIzaSyCDc68JsPRrTyXo8F2AS6BMXTCqy3yVoPA",
+				authDomain: "smswall-7e973.firebaseapp.com",
+				databaseURL: "https://smswall-7e973.firebaseio.com",
+				projectId: "smswall-7e973",
+				storageBucket: "smswall-7e973.appspot.com",
+				messagingSenderId: "533481383562"
+			};
+			firebase.initializeApp(config);
