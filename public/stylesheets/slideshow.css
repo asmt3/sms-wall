@@ -29,12 +29,12 @@ flex:1;
 	font-size:12px;
 }
 .example-pun {
+	font-size: 100px;
 	color: #ff69b4;
 }
 .slideshow .main .pun {
 	padding:12px;
-}
-.slideshow .main .pun{
+	font-size: 100px;
 	color: #ff69b4;
 }
 .slideshow .main .pun .from{
@@ -44,7 +44,7 @@ flex:1;
 }
 
 .slideshow footer {
-	font-size: 50px;
+	font-size: 64px;
 	font-family: 'VT323', cursive;
 	display: flex;
 	flex:1;
@@ -79,13 +79,23 @@ flex:1;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   text-shadow: 0 0 10px rgb(255,255,255) , 0 0 20px rgb(255,255,255) , 0 0 30px rgb(255,255,255) , 0 0 40px rgb(255,17,119) , 0 0 70px rgb(255,17,119) , 0 0 80px rgb(255,17,119) , 0 0 100px rgb(255,17,119) , 0 0 150px rgb(255,17,119) ;
-  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
-  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+  
+
+
+animation: example 1s infinite;
 }
 
 /*.night-hotel:hover {*/
+
+@keyframes example {
+    from {
+    	text-shadow: 0 0 6px rgb(255,255,255) , 0 0 15px rgb(255,255,255) , 0 0 20px rgb(255,255,255) , 0 0 30px rgb(255,17,119) , 0 0 40px rgb(255,17,119) , 0 0 50px rgb(255,17,119) , 0 0 60px rgb(255,17,119) , 0 0 80px rgb(255,17,119) ;
+    }
+    to {
+    	text-shadow: 0 0 5px rgb(255,255,255) , 0 0 10px rgb(255,255,255) , 0 0 15px rgb(255,255,255) , 0 0 20px rgb(255,17,119) , 0 0 35px rgb(255,17,119) , 0 0 40px rgb(255,17,119) , 0 0 50px rgb(255,17,119) , 0 0 75px rgb(255,17,119);
+    }
+}
+
 .night-hotel {
-  text-shadow: 0 0 5px rgb(255,255,255) , 0 0 10px rgb(255,255,255) , 0 0 15px rgb(255,255,255) , 0 0 20px rgb(255,17,119) , 0 0 35px rgb(255,17,119) , 0 0 40px rgb(255,17,119) , 0 0 50px rgb(255,17,119) , 0 0 75px rgb(255,17,119) ;
+  
 }
