@@ -3,9 +3,9 @@ extends layouts/slideshow
 block content
 	div.slideshow(ng-controller="SlideshowController")
 		header
-			h1.night-hotel JedWed Band Names
+			h1.night-hotel JedWed<br>BandNames
 		div.main
-			div.example-pun(ng-show=" !currentPun ") eg. The Talking Jeds
+			div.example-pun(ng-show=" !currentPun ") e.g. Wedonna
 			div.pun(ng-show="currentPun")
 				div.content {{currentPun.content}}
 				div.from {{currentPun.from}}

@@ -19,7 +19,7 @@ flex:1;
 
 .slideshow .main {
 	display: flex;
-	flex:9;
+	flex:2;
 	font-family: 'VT323', cursive;
 	align-items: center;
 	justify-content: center;
