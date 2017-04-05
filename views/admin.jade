@@ -8,19 +8,17 @@ block content
 
 		md-content
 			md-list()
-				md-list-item(flex, ng-repeat="pun in puns")
+				md-list-item(flex, layout="row", ng-repeat="pun in puns")
 					
+					div(flex) {{pun.content}}
+					div(flex) {{pun.from}}
 					
-					div
+					div.controls
 						md-switch(
 							ng-model="pun.disabled"
 							ng-change="updatePun(pun)"
 						) {{pun.disabled ? 'Disabled' : 'Enabled'}}
-
-					h3 {{pun.content}}
-					h4 {{pun.from}}
-					
-					md-button.md-raised.md-warn(ng-click="deletePun(pun)") Delete
+						//- md-button.md-raised.md-warn(ng-click="deletePun(pun)") Delete
 
 				
 		

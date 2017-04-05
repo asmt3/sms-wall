@@ -1,0 +1,7 @@
+body {
+	font-size:150%
+}
+
+md-list-item:nth-child(2n) {
+	background: #ccc;
+}
