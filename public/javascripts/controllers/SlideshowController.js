@@ -1,8 +1,8 @@
 app.controller('SlideshowController', function ($scope, $timeout, $firebase, $firebaseArray) {
 
 	// 
-	var newPunDelay = 3000;
-	var oldPunDelay = 1000;
+	var newPunDelay = 5000;
+	var oldPunDelay = 2000;
 
 	$scope.currentPun = null
 	$scope.newCount = 0;

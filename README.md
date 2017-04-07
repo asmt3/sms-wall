@@ -3,12 +3,7 @@ Displays SMSs sent to a Twilio phone number and displays then in a slideshow
 
 
 
-# todo
-- deploy
-- create auto replies
-
-
-# example 
+# example Twilio payload
 ```
 { 
   ToCountry: 'GB',
@@ -21,7 +16,7 @@ Displays SMSs sent to a Twilio phone number and displays then in a slideshow
   FromState: '',
   SmsStatus: 'received',
   FromCity: '',
-  Body: 'Hh',
+  Body: 'Test',
   FromCountry: 'GB',
   To: '+447492881533',
   ToZip: '',
@@ -29,5 +24,7 @@ Displays SMSs sent to a Twilio phone number and displays then in a slideshow
   MessageSid: 'SM69c4de4413412078982195d61e8467fb',
   AccountSid: 'AC427e52e5d91ac7ee98f4367bd17ff2fc',
   From: '+447833086722',
-  ApiVersion: '2010-04-01' }
+  ApiVersion: '2010-04-01' 
+  }
+  ```
 
