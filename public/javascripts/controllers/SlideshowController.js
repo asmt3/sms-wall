@@ -5,10 +5,14 @@ app.controller('SlideshowController', function ($scope, $timeout, $firebase, $fi
 	var oldPunDelay = 2000;
 
 	$scope.currentPun = null
+	$scope.currentPunFrom = null;
 	$scope.newCount = 0;
 
 	var ref = firebase.database().ref().child("puns");
 	$scope.puns = $firebaseArray(ref);
+
+	var ref = firebase.database().ref().child("senders");
+	$scope.senders = $firebaseArray(ref);
 
 	// start once loaded
 	$scope.puns.$loaded(function(){
@@ -55,6 +59,18 @@ app.controller('SlideshowController', function ($scope, $timeout, $firebase, $fi
 		});
 
 		return sortedPuns.length ? sortedPuns[0] : false;
+	}
+
+	var getSenderId = (pun) => {
+		var senderDetail = $scope.senders.pick((sender) => {
+			if (sender.telephone == pun.from) return sender
+		})
+
+		if (sender && sender.name) {
+			return sender.name
+		} else {
+			return pun.From
+		}
 	}
 
 	
