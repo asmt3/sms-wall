@@ -2,13 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 var admin = require("firebase-admin");
+var replies = require('../lib/replies.js');
 
+
+// Firebase Config
 var serviceAccount = require("../config/firebase.json");
-
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://smswall-7e973.firebaseio.com"
 });
+
 
 
 
@@ -23,22 +26,29 @@ router.get('/admin', function(req, res, next) {
 
 router.post('/receive', function(req, res, next) {
 	
+	console.log('SMS received!')
+	console.log(req.body)
+
 	if (req.body.Body[0] == '.') {
 		
 		// this is a number-name update
 		console.log('this is a number-name update')
-		saveOrUpdateSender(req)
-		// .then(snapshot => {
-		// 	res.send(punData);
-		// 	res.send({"received": true})
-		// });
+		saveOrUpdateSender(req, function(err) {
+			res.send({
+				"received": true,
+				err: err
+			})
+		})
+		
 	} else {
 		// this is a pun
 		console.log('this is a pun')
-		savePun(req).then(snapshot => {
-			res.send(punData);
-			res.send({"received": true})
-		});
+		savePun(req, function(err){
+			res.send({
+				"received": true,
+				err: err
+			})
+		})
 	}
 	
 
@@ -47,12 +57,15 @@ router.post('/receive', function(req, res, next) {
 
 router.get('/test', function(req, res, next) {
 	
+	replies.sendFirst(function(err, message){
+		res.json(message)
+	})
 	
 	
 });
 
 
-function savePun(req) {
+function savePun(req, cb) {
 	var punData = {
 		content: req.body.Body,
 		from: req.body.From,
@@ -61,10 +74,42 @@ function savePun(req) {
 	}
 
 	var punsRef = admin.database().ref("puns");
-	return punsRef.push().set(punData)
+
+	
+	// check if this is the first pun from this person
+	punsRef.orderByChild('from')
+		.equalTo(punData.from)
+		.once('value')
+		.then(function(snapshot){
+
+			var pun = snapshot.val()
+
+			console.log(pun)
+
+
+			// function writePun(punData) {
+			// 	punsRef.push().set(punData, cb)
+			// }
+
+			if (!pun) {
+				// this was their first
+				replies.sendFirst(punData.from, function(){
+					punsRef.push().set(punData, cb)
+				})
+			} else if(Object.keys(pun).length < 4) {
+				// this was their 2nd-4th
+				replies.sendInsult(punData.from, function(){
+					punsRef.push().set(punData, cb)
+				})
+			} else {
+				// no more replies
+				punsRef.push().set(punData, cb)
+			}
+		})
+	
 }
 
-function saveOrUpdateSender(req) {
+function saveOrUpdateSender(req, cb) {
 
 	var name = req.body.Body.substr(1);
 	var telephone = req.body.From;
@@ -89,15 +134,17 @@ function saveOrUpdateSender(req) {
 			        sender[k].name = name
 			    }
 				
-				sendersRef.update(sender)
+				sendersRef.update(sender, cb)
 
 			} else {
 				// new sender
 				console.log('new sender');
-				var newSenderRef = sendersRef.push();
-				newSenderRef.set({
+				sendersRef.push().set({
 					'telephone': telephone,
 					'name': name
+				}, function(err){
+					console.log(err)
+					cb(err)
 				});
 			}
 

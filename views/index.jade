@@ -8,12 +8,12 @@ block content
 			div.example-pun(ng-show=" !currentPun ") e.g. Wedonna
 			div.pun(ng-show="currentPun")
 				div.content {{currentPun.content}}
-				div.from {{currentPun.from}}
+				div.from {{currentSenderId}}
 			//- pre.all {{puns | json}}
 
 		footer 
 			div.instructions
-				span Text 07492 881 JED
+				span Text {{numbersToText[0]}}
 			div.status 
 				span.new(ng-show=" (newCount > 0) ") {{newCount}} unseen
 				

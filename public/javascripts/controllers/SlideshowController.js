@@ -1,18 +1,22 @@
-app.controller('SlideshowController', function ($scope, $timeout, $firebase, $firebaseArray) {
+app.controller('SlideshowController', function ($scope, $timeout, $interval, $firebase, $firebaseArray) {
 
 	// 
 	var newPunDelay = 5000;
 	var oldPunDelay = 2000;
 
+	$scope.numbersToText = [
+		'07492 881 533',
+		'07492 881 JED'
+	];
 	$scope.currentPun = null
-	$scope.currentPunFrom = null;
+	$scope.currentSenderId = null;
 	$scope.newCount = 0;
 
-	var ref = firebase.database().ref().child("puns");
-	$scope.puns = $firebaseArray(ref);
+	var punsRef = firebase.database().ref().child("puns");
+	$scope.puns = $firebaseArray(punsRef);
 
-	var ref = firebase.database().ref().child("senders");
-	$scope.senders = $firebaseArray(ref);
+	var sendersRef = firebase.database().ref().child("senders");
+	$scope.senders = $firebaseArray(sendersRef);
 
 	// start once loaded
 	$scope.puns.$loaded(function(){
@@ -20,20 +24,29 @@ app.controller('SlideshowController', function ($scope, $timeout, $firebase, $fi
 	})
 
 	var rotatePuns = function(){
+		console.log('rotatePuns');
+
 		$scope.currentPun = pickPun();
+		$scope.currentSenderId = getSenderId($scope.currentPun)
+
+
+		var delay = oldPunDelay;
 
 		if ($scope.currentPun) { // don't do anything until loaded
 			var delay = $scope.currentPun.seen ? oldPunDelay : newPunDelay;
 
 			// update seen time
 			var now = new Date().getTime()/1000
-			ref.child($scope.currentPun.$id).update({
+			punsRef.child($scope.currentPun.$id).update({
 				seen: now
+			}, function(err){
+				if (err) console.log(err)
 			})
 
 		}
-		
+
 		$timeout(rotatePuns, delay);
+		
 	}
 
 	var pickPun = function() {
@@ -61,18 +74,23 @@ app.controller('SlideshowController', function ($scope, $timeout, $firebase, $fi
 		return sortedPuns.length ? sortedPuns[0] : false;
 	}
 
-	var getSenderId = (pun) => {
-		var senderDetail = $scope.senders.pick((sender) => {
-			if (sender.telephone == pun.from) return sender
+	var getSenderId = function(pun) {
+		var senderDetail = $scope.senders.find((sender) => {
+			if (sender.telephone == pun.from) return true
 		})
 
-		if (sender && sender.name) {
-			return sender.name
+		if (senderDetail && senderDetail.name) {
+			return senderDetail.name
 		} else {
-			return pun.From
+			return pun.from
 		}
 	}
 
+	var rotateNumbersToText = function() {
+		$scope.numbersToText.push($scope.numbersToText.shift())
+	}
+
+	$interval(rotateNumbersToText, 5000);
 	
 
 
