@@ -57,7 +57,7 @@ router.post('/receive', function(req, res, next) {
 
 router.get('/test', function(req, res, next) {
 	
-	replies.sendFirst(function(err, message){
+	replies.sendFirst('+447833086722', function(err, message){
 		res.json(message)
 	})
 	
