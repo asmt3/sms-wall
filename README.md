@@ -5,11 +5,13 @@ Displays SMSs sent to a Twilio phone number and displays then in a slideshow
 # Requirements
 eb-cli
 
-# Setting up: Get a Twilio Acount
+# Setting up
+
+## Get a Twilio Acount
 1. Record your API details
 2. Create a phone number from which you can send and receive SMS
 
-# Setting up: Get a Firebase Account
+## Get a Firebase Account
 1. Create a Firebase account
 2. Create a database
 3. Generate a "Service Account" key (a JSON file that looks like this)
@@ -28,6 +30,12 @@ eb-cli
   }
 ```
 4. Save this JSON file as config/firebase.json
+5. Create a .env file in this directory
+  ```
+  TWILIO_ACCOUNT_ID=***
+  TWILIO_AUTH_TOKEN=***
+  TWILIO_PHONE_NUMBER='***'
+  ```
 
 
 # Testing locally
@@ -40,10 +48,13 @@ eb-cli
 1. Clone this repo and `cd sms-wall`
 2. `eb init --profile <your profile name>` (If you only have one AWS profile, you do not need to specify profile)
 3. Define the environment by answering the questions from eb-cli
+4. `eb create`
+5. Update Environment variables in the Beanstalk app
+6. Update the webhook in your Twilio account for received SMSs
 
 
 
-# example Twilio payload
+### example Twilio payload
 ```
 { 
   ToCountry: 'GB',
