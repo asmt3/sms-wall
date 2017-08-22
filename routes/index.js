@@ -20,6 +20,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'JedWed Band Names' });
 });
 
+/* GET home page. */
+router.get('/hmtl', function(req, res, next) {
+  res.render('code', { title: 'HMTL Band Names' });
+});
+
 router.get('/admin', function(req, res, next) {
   res.render('admin', { title: 'JedWed Band Names' });
 });

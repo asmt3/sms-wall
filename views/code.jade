@@ -3,9 +3,9 @@ extends layouts/slideshow
 block content
 	div.slideshow(ng-controller="SlideshowController")
 		header
-			h1.night-hotel JedWed<br>BandNames
+			h1.night-hotel HMTL<br>BandNames
 		div.main
-			div.example-pun(ng-show=" !currentPun ") e.g. Wedonna
+			div.example-pun(ng-show=" !currentPun ") e.g. Green Data
 			div.pun(ng-show="currentPun")
 				div.content {{currentPun.content}}
 				div.from {{currentSenderId}}
@@ -13,7 +13,7 @@ block content
 
 		footer 
 			div.instructions
-				span(style="display:none") SMS {{numbersToText[0]}}
+				span SMS {{numbersToText[0]}}
 			div.status 
 				span.new(ng-show=" (newCount > 0) ") {{newCount}} unseen
 				
