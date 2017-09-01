@@ -2,6 +2,8 @@
 Displays SMSs sent to a Twilio phone number and displays then in a slideshow
 
 
+![UX](./BandNames.gif)
+
 # Requirements
 eb-cli
 
